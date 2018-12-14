@@ -34,3 +34,12 @@ http_access allow myacl2
 ```
 # ansible-playbook -i hosts squid.yml --ask-pass
 ```
+
+### 確認する
+
+「xxx」の部分に、プロキシサーバのIPを指定して実行して下さい。
+proxy.htmlで出力されたIPアドレスが、プロキシサーバのIPになっていればOKです。
+
+```
+curl https://kakunin.net/ -x xxx.xxx.xxx.xxx:3128 -o proxy.html
+```
