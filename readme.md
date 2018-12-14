@@ -33,7 +33,8 @@ http_access allow myacl2
 
 ### ansibleを実行する
 
-下記実行すると、SSHのパスワードを聞かれるので入力すると構築開始されます。
+下記実行します
+
 
 ```
 # ansible-playbook -i hosts squid.yml
