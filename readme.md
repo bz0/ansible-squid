@@ -11,13 +11,17 @@ ansibleでプロキシサーバを構築します。
 
 ### hosts
 
-プロキシサーバを構築したいサーバのIPアドレスを指定します
+プロキシサーバを構築したいサーバのIPアドレスとパスワードを指定します。
 
-### squid.xonf
+```hosts
+xxx.xxx.xxx.xxx:22 ansible_ssh_pass=xxxx
+```
+
+### squid.conf
 
 プロキシサーバに、アクセスを許可するIPアドレスを指定します。
 
-```
+```squid.conf
 # アクセスを許可するIPアドレスを設定して下さい
 acl myacl src xxx.xxx.xxx.xxx
 http_access allow myacl
@@ -32,7 +36,7 @@ http_access allow myacl2
 下記実行すると、SSHのパスワードを聞かれるので入力すると構築開始されます。
 
 ```
-# ansible-playbook -i hosts squid.yml --ask-pass
+# ansible-playbook -i hosts squid.yml
 ```
 
 ### 確認する
@@ -41,5 +45,5 @@ http_access allow myacl2
 proxy.htmlで出力されたIPアドレスが、プロキシサーバのIPになっていればOKです。
 
 ```
-curl https://kakunin.net/ -x xxx.xxx.xxx.xxx:3128 -o proxy.html
+# curl https://kakunin.net/ -x xxx.xxx.xxx.xxx:3128 -o proxy.html
 ```
