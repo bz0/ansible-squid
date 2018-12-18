@@ -4,7 +4,7 @@
     - name: squid インストール
       yum: name=squid disable_gpg_check=no state=installed
     - name: ansible 設定ファイル変更
-      copy: src=/etc/ansible/squid.conf dest=/etc/squid/squid.conf owner=root group=root mode=0644
+      copy: src=./squid.conf dest=/etc/squid/squid.conf owner=root group=root mode=0644
       notify: squid restart
     - name: iptables 3128ポートを開放
       shell:  iptables -I INPUT 5 -p tcp -m tcp --dport 3128 -j ACCEPT
